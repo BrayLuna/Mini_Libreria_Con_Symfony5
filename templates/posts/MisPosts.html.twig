@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+{{parent()}} - Mis libros
+{% endblock %}
+
+{% block body %}
+    {{parent()}}
+    
+    {{dump(posts)}}
+    
+
+{% endblock %}

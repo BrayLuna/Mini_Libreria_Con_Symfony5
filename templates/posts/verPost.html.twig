@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{parent()}}- Mas acerca de{% endblock %}
+{% block body %}
+{{parent()}}
+
+
+<div class="container bg-white rounded my-3 p-4">
+        <div class="d-flex bd-highlight">
+            <div class="p-2 flex-grow-1 bd-highlight">
+                 <h3>{{post.titulo}}</h3>
+                 <div class="row row-cols-2">
+                    <div class="col "> Autor: {{post.autor}} </div>
+                    <div class="col">Editorial:{{post.editorial}}</div>
+                    <div class="col"> ISBN: {{post.ISBN}} </div>
+                    <div class="col">Numero de edicion: {{post.edicion}}</div>
+                    <div class="col"> Numero de paginas: {{post.paginas}} </div>
+                    <div class="col"> Pais: {{post.pais}}</div>
+                    <div class="col"> Año de lanzamiento: {{post.lanzamiento}} </div>
+                </div>
+                
+            </div>
+            <div class="p-2 bd-highlight">
+                <div class="align-self-center">
+                    <img class="rounded" src="{{ asset('uploads/portadas/'~post.portada) }}" width="150px">
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="text-justify my-3">
+            {{post.descripcion}}
+        </div>
+    </div>
+{% endblock %}
+
+

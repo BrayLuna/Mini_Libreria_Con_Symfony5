@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{parent()}}- Agregar un nuevo libro{% endblock %}
+
+{% block body %}
+    
+
+    {{ include('biblioteca/_form.html.twig') }}
+    <center>
+    <a href="{{ path('biblioteca_index') }}" class="btn btn-primary">Regresar a la lista de libros</a>
+    </center>
+{% endblock %}

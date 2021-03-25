@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{parent()}}- Inicio
+{% endblock %}
+
+{% block body %}
+	{{parent()}}
+
+
+	<div class="container">
+		<div class="row"> 
+			<div class="col-4-md-8 cursor">
+				{% for posts in posts %}
+
+					<div class="container">
+						<div class="row">
+							<div class="col-md-8 cursor">
+								<div class="bg-white rounded p-3 my-3">
+									<div class="d-flex bd-highlight">
+										<div class="p-2 flex-grow-1 bd-highlight">
+											<h3>{{posts.titulo}}</h3>
+											<div class="my-3 bg-yellow">
+												<i class="fa fa-user"></i>
+												<strong>Autor:
+													{{posts.autor}}</strong>
+											</div>
+											<div class=" bg-black">
+												<i class="far fa-clock"></i>
+												Descripcion:
+												{{posts.descripcionCorta}}</div>
+											<br>
+											<a href="{{path('VerPost',{id:posts.id})}}" class="btn btn-primary">Ver mas</a>
+										</div>
+										<div class="p-2 bd-highlight">
+											<div class="align-self-center">
+												<img class="rounded" src="{{ asset('uploads/portadas/'~posts.portada) }}" width="150px">
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+    <div class="container">
+  <div class="row">
+    <div class="col-4">
+      Primera de tres columnas
+    </div>
+    <div class="col-4">
+      Segunda de tres columnas
+    </div>
+    <div class="col-4">
+      Tercera de tres columnas
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}

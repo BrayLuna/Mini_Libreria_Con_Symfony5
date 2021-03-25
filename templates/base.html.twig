@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>
+			{% block title %}BacaLibro
+			{% endblock %}
+		</title>
+		{# Run `composer require symfony/webpack-encore-bundle`
+														           and uncomment the following Encore helpers to start using Symfony UX #}
+		{% block stylesheets %}
+
+			<link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+			<link rel="stylesheet" href="{{ asset('css/stylesheet.css') }}">
+
+
+		{% endblock %}
+
+
+	</head>
+	<body>
+		{% block body %}
+
+			<nav class="navbar navbar-expand-lg navbar-light">
+				<a class="navbar-brand" href="{{path('dashboard')}}">Bacalibro</a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav mr-auto">
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Administrar</a>
+							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+								<a class="dropdown-item" href="{{path('biblioteca_index')}}">Libros</a>
+							</div>
+						</li>
+					</ul>
+
+
+				</div>
+
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">usuario</a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<a class="dropdown-item" href="{{path('app_login')}}">Inciar sesión</a>
+							<a class="dropdown-item" href="{{ path('app_logout') }}">Cerrar sesión</a>
+						</li>
+					</li>
+				</ul>
+
+
+			</nav>
+			
+			{{render(controller(
+			'App\\Controller\\SearchController::searchBar'
+		))}}
+
+		{% endblock %}
+
+		{% block javascripts %}
+			<script src="{{asset('js/jquery.min.js')}}"></script>
+			<script src="{{asset('js/bootstrap.min.js')}}"></script>
+		{% endblock %}
+
+
+	</body>
+</html>

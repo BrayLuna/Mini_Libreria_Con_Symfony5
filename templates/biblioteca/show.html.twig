@@ -1,0 +1,103 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{parent()}}
+{% endblock %}
+
+{% block body %}
+	{{parent()}}
+
+	<style type="text/css">
+		.container {
+			text-align: center;
+		}
+		.table-striped tbody th:nth-of-type(odd) {
+			background-color: white;
+		}
+
+		.thead-green {
+			background-color: white;
+			color: black;
+		}
+	</style>
+	<div>
+		<div>
+			<div style="background-color:white" class="pt-3 pb-4 text-center font-bold font-up danger-text">
+				<center>
+					<br>
+					<h1>Informacion del libro "{{biblioteca.titulo}}"</h1>
+				</center>
+			</div>
+		</div>
+	</div>
+
+	<div class="conteiner">
+		<table class="table table-striped table-hover">
+			<tbody class="thead-green">
+				<tr>
+					<th class="text-danger ">Id</th>
+					<td>{{ biblioteca.id }}</td>
+				</tr>
+				<tr>
+					<th class="text-danger">Titulo</th>
+					<td>{{ biblioteca.titulo }}</td>
+				</tr>
+				<tr>
+					<th class="text-danger">Descripcion</th>
+					<td>{{ biblioteca.descripcion }}</td>
+				</tr>
+				<tr>
+					<th class="text-danger">Autor</th>
+					<td>{{ biblioteca.autor }}</td>
+				</tr>
+				<tr>
+					<th class="text-danger">DescripcionCorta</th>
+					<td>{{ biblioteca.descripcionCorta }}</td>
+				</tr>
+				<tr>
+					<th class="text-danger">Portada</th>
+					<td><img class="rounded" src="{{ asset('uploads/portadas/'~biblioteca.portada) }}" width="150px"></td>
+
+				</tr>
+				<tr>
+					<th class="text-danger">ISBN</th>
+					<td>{{ biblioteca.ISBN }}</td>
+				</tr>
+				<tr>
+					<th class="text-danger">Editorial</th>
+					<td>{{ biblioteca.editorial }}</td>
+				</tr>
+				<tr>
+					<th class="text-danger">Paginas</th>
+					<td>{{ biblioteca.paginas }}</td>
+				</tr>
+				<tr>
+					<th class="text-danger">Edicion</th>
+					<td>{{ biblioteca.edicion }}</td>
+				</tr>
+				<tr>
+					<th class="text-danger">Pais</th>
+					<td>{{ biblioteca.pais }}</td>
+				</tr>
+				<tr>
+					<th class="text-danger">Lanzamiento</th>
+					<td>{{ biblioteca.lanzamiento }}</td>
+				</tr>
+				<center>
+					<table style="background-color:white" class="table">
+						<tr>
+							<th class="text-danger"><a class="btn btn-primary" href="{{ path('biblioteca_edit', {'id': biblioteca.id}) }}">editar</a>
+							</th>
+							<th>{{ include('biblioteca/_delete_form.html.twig') }}</th>
+							<th class="text-danger"><a class="btn btn-primary" href="{{ path('biblioteca_index') }}">Regresar a toda la lista de menu</a>
+							</th>
+						</tr>
+					</table>
+				</center>
+
+			</tbody>
+		</table>
+	</div>
+
+
+{% endblock %}

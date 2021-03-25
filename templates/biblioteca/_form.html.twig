@@ -1,0 +1,31 @@
+
+{% extends 'base.html.twig' %}
+
+{% block title %}{{parent()}}- Agregar libro{% endblock %}
+
+{% block body %}
+{{parent()}}
+ <div class ="container h-100">
+        <div class ="row h-100 justify-content-center align-items-center">
+            <div class="col-6 bg-white rounded my-3 p5">
+                <h1>Editar el libro "{{biblioteca.titulo}}" </h1>
+                
+                {{ form_start(form) }}
+                    {{ form_widget(form) }}
+                    
+                    <table class="table table-hover">
+                        <!--Table head-->
+                       <thead class="mdb-color darck-3">
+                            <tr class="text-danger">
+                                <th> <button class="btn btn-primary">{{ button_label|default('Guardar') }}</button></th>
+                                <th> <a class="btn btn-primary" href="{{ path('biblioteca_index') }}">Regresar a la lista</a> </th>
+                            </tr>
+                        </thead>
+                    </table>
+                {{ form_end(form) }}
+            
+            </div>
+        </div>
+     </div>
+
+{% endblock %}
