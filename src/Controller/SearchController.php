@@ -20,13 +20,13 @@ class SearchController extends AbstractController
         return $this->render('search/index.html.twig', [
             'controller_name' => 'SearchController',
         ]);
-    }
+    }   
 
     public function searchBar()
     {
         $form = $this->createFormBuilder(null)
             ->setAction($this->generateUrl(route: 'handleSearch'))
-            ->add('query', TextType::class)
+            ->add('buscar', TextType::class)
             ->add('search', SubmitType::class, [
                 'attr' => [
                     'class' => 'btn btn-primary'
@@ -50,12 +50,12 @@ class SearchController extends AbstractController
     
     #[Route('/handleSearch', name: 'handleSearch')]
     public function handleSearch(Request $request, BibliotecaRepository $bibliotecaRepository){
-       $query= $request->request->get(key:'form')['query'];
-       if ($query) {
+       $query= $request->request->get(key:'form')['buscar'];
+       if ($query) { 
            $posts=$bibliotecaRepository->findAllGreaterThanPrice($query);
        }
-       dump($posts); die;
+       return $this->render('search/index.html.twig', [
+        'posts' => $posts,
+    ]);
     }
-     
-    
 }

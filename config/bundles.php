@@ -14,4 +14,6 @@ return [
     Twig\Extra\TwigExtraBundle\TwigExtraBundle::class => ['all' => true],
     Knp\Bundle\PaginatorBundle\KnpPaginatorBundle::class => ['all' => true],
     Algolia\SearchBundle\AlgoliaSearchBundle::class => ['all' => true],
+    Knp\Bundle\SnappyBundle\KnpSnappyBundle::class => ['all' => true],
+
 ];

@@ -1,0 +1,81 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+	{{parent()}}- libros en existencia
+{% endblock %}
+{% block body %}
+
+	<nav class="navbar navbar-expand-lg navbar-light">
+		<a class="navbar-brand" href="{{path('dashboard')}}">Bacalibro</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Administrar</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+						<a class="dropdown-item" href="{{path('biblioteca_index')}}">Libros</a>
+						<a  class="dropdown-item" href="{{path('pdf')}}">Imprimir libros</a>
+					</div>
+				</li>
+			</ul>
+		</div>
+
+		<button type="button" class="btn btn-primary " onclick="javascrip:window.print()">Imprimir PDF</button>
+
+		
+
+	</nav>
+
+
+	{% block javascripts %}
+		<script src="{{asset('js/jquery.min.js')}}"></script>
+		<script src="{{asset('js/bootstrap.min.js')}}"></script>
+	{% endblock %}
+
+	<div class="container bg-white rounded my-3 p-4">
+		<div class="d-flex bd-highlight">
+			<div class="p-2 flex-grow-1 bd-highlight">
+				<center>
+					<h1>Bacalibro </h1>
+					<img src="{{ asset('img/LogoBacalibro.jpeg') }}" width="350px" alt="Symfony!"/>
+                    <h1>Libros en existencia </h1>
+				</center>
+			</div>
+			<hr>
+		</div>
+		{% for biblioteca in bibliotecas %}
+			<div class="container bg-white rounded my-3 p-4">
+				<div class="d-flex bd-highlight">
+					<div class="p-2 flex-grow-1 bd-highlight">
+						<center>
+							<h2>{{biblioteca.titulo}}</h2>
+						</center>
+						<div class="row row-cols-2">
+							<div class="col ">
+								Autor:
+								{{biblioteca.autor}}
+								<br>
+								Editorial:{{biblioteca.editorial}}</div>
+						</div>
+						<div class="text-justify my-3">
+							{{biblioteca.descripcion}}
+
+						</div>
+
+					</div>
+					<div class="p-2 bd-highlight">
+						<div class="align-self-center">
+							<img class="rounded" src="{{ asset('uploads/portadas/'~biblioteca.portada) }}" width="250px">
+						</div>
+					</div>
+
+				</div>
+				<hr>
+
+
+			</div>
+            <br>
+		{% endfor %}
+	{% endblock %}

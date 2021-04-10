@@ -7,19 +7,27 @@ use App\Form\BibliotecaType;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use App\Repository\BibliotecaRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Request; 
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 #[Route('/biblioteca')] 
 class BibliotecaController extends AbstractController
-{
+{ 
     #[Route('/', name: 'biblioteca_index', methods: ['GET'])]
     public function index(BibliotecaRepository $bibliotecaRepository): Response
     {
         return $this->render('biblioteca/index.html.twig', [
             'bibliotecas' => $bibliotecaRepository->findAll(),
-        ]);
+        ]); 
+    }
+
+    #[Route('/pdf', name: 'pdf', methods: ['GET'])]
+    public function imprimir(BibliotecaRepository $bibliotecaRepository): Response
+    {
+        return $this->render('biblioteca/imprimir.html.twig', [
+            'bibliotecas' => $bibliotecaRepository->findAll(),
+        ]); 
     }
 
     #[Route('/new', name: 'biblioteca_new', methods: ['GET', 'POST'])]

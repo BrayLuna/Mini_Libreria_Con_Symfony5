@@ -37,9 +37,9 @@ class BibliotecaRepository extends ServiceEntityRepository
     }
 */
     /**
-     * @return Biblioteca[]
+     * @return Biblioteca[] 
      */
-    
+    /*
     public function findAllGreaterThanPrice( string $autor): array
     {
         // automatically knows to select Products
@@ -56,24 +56,22 @@ class BibliotecaRepository extends ServiceEntityRepository
         // to get just one result:
         // $product = $query->setMaxResults(1)->getOneOrNullResult();
     }
-    /*
+    */
+    
     public function findAllGreaterThanPrice(string $titulo): array
     {
         // automatically knows to select Products
         // the "p" is an alias you'll use in the rest of the query
         $qb = $this->createQueryBuilder('p')
 
-
-            ->where('p.titulo > :titulo')
-            ->setParameter('titulo', $titulo)
-            ->orderBy('p.titulo', 'ASC');
-
-
-
-        $query = $qb->getQuery();
+            
+            ->andWhere('p.titulo LIKE :titulo OR p.autor LIKE :titulo OR p.descripcion LIKE :titulo')
+            ->setParameter('titulo','%' .$titulo.'%');
+            
+            $query = $qb->getQuery();
 
         return $query->execute();
-    }*/
+    }
 
 
 

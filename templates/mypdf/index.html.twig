@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}libro {% endblock %}
+
+{% block body %}
+{# ./templates/default/mypdf.html.twig #}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title of the PDF</title>
+    </head>
+    <body>
+    {% for biblioteca in bibliotecas %}
+    <div class="container bg-white rounded my-3 p-4">
+        <div class="d-flex bd-highlight">
+            <div class="p-2 flex-grow-1 bd-highlight">
+                 <h3>{{biblioteca.titulo}}</h3>
+                 <div class="row row-cols-2"> 
+                    <div class="col "> Autor:  {{biblioteca.autor}}</div>
+                    <div class="col">Editorial:  {{biblioteca.editorial}}</div>
+                </div>
+                
+            </div>
+            <div class="p-2 bd-highlight">
+                <div class="align-self-center">
+                <img src="../public/uploads/portadas/{{ biblioteca.portada }}">
+                <img src="uploads/portada/biblioteca.portada"/>
+                <img class="rounded" src="{{ asset('uploads/portadas/'~biblioteca.portada) }}"  width="150px">
+                </div>
+            </div>
+        </div>
+        
+        <div class="text-justify my-3">   <h3>Descripcion:</h3>
+            {{biblioteca.descripcion}}
+        </div>
+    </div>
+    <hr>
+       
+    {% endfor %}
+        
+    </body>
+</html>
+{% endblock %}

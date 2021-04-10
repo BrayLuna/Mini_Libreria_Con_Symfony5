@@ -61,6 +61,8 @@ class PostsController extends AbstractController
         return $this->render('posts/verPost.html.twig',['post'=> $post]);
 
     }
+
+    
   //  #[Route('/mis-post', name: 'Misposts')]
     //public function MisPost()
     //{

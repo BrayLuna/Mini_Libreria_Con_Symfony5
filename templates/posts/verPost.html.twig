@@ -8,7 +8,7 @@
         <div class="d-flex bd-highlight">
             <div class="p-2 flex-grow-1 bd-highlight">
                  <h3>{{post.titulo}}</h3>
-                 <div class="row row-cols-2">
+                 <div class="row row-cols-2"> 
                     <div class="col "> Autor: {{post.autor}} </div>
                     <div class="col">Editorial:{{post.editorial}}</div>
                     <div class="col"> ISBN: {{post.ISBN}} </div>
@@ -28,6 +28,8 @@
         <hr>
         <div class="text-justify my-3">
             {{post.descripcion}}
+            <a href="{{path('mypdf')}}" class="btn btn-primary">imprimir</a>
+
         </div>
     </div>
 {% endblock %}
